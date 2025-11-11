@@ -33,7 +33,7 @@ class Spotfix_Admin {
 	 */
 	public function add_admin_menu() {
 		add_options_page(
-			'Spotfix Settings',
+			'Spotfix',
 			'Spotfix',
 			'manage_options',
 			'spotfix-settings',
@@ -56,7 +56,7 @@ class Spotfix_Admin {
 
 		add_settings_field(
 			'spotfix_code',
-			'Spotfix Code',
+			'Frontend code',
 			array( $this, 'render_code_field' ),
 			'spotfix-settings',
 			'spotfix_general_section'
@@ -112,7 +112,7 @@ class Spotfix_Admin {
 	 * Render general section.
 	 */
 	public function render_general_section() {
-		echo sprintf( '<h3>%s</h3>', __( 'Spotfix - proofreading, spell and grammar check by visitors', 'spell-grammar-typo-check' ) );
+		echo sprintf( '<h3>%s</h3>', __( 'Proofreading, spell and grammar check by visitors', 'spell-grammar-typo-check' ) );
 		echo sprintf( '<p>%s</p>', __( 'Collect questions, suggestions, and fix content directly on website pages.', 'spell-grammar-typo-check' ) );
 	}
 
@@ -122,7 +122,7 @@ class Spotfix_Admin {
 	public function render_code_field() {
 		$settings = get_option( 'spotfix_settings', array() );
 		$code = isset( $settings['code'] ) ? $settings['code'] : '';
-		$example_code = "(function () {\n      let apbctScript = document.createElement('script');\n      apbctScript.type = 'text/javascript';\n      apbctScript.async = \"true\";\n      apbctScript.src = 'https://doboard.com/1.0.0/spotfix.min.js?projectToken=4d335d7b8eff587d9002d90db78f90b6&projectId=103&accountId=1'; \n      let firstScriptNode = document.getElementsByTagName('script')[0];\n      firstScriptNode.parentNode.insertBefore(apbctScript, firstScriptNode);\n    })();";
+		$example_code = "(function () {\n      let apbctScript = document.createElement('script');\n      apbctScript.type = 'text/javascript';\n      apbctScript.async = \"true\";\n      apbctScript.src = 'https://spotfix.doboard.com/doboard-widget-bundle.min.js?projectToken=4d335d7b8eff587d9002d90db78f90b6&projectId=103&accountId=1'; \n      let firstScriptNode = document.getElementsByTagName('script')[0];\n      firstScriptNode.parentNode.insertBefore(apbctScript, firstScriptNode);\n    })();";
 		?>
 		<textarea name="spotfix_settings[code]" rows="8" class="large-text code-textarea" id="spotfix-code"><?php echo esc_textarea( $code ); ?></textarea>
 		<p class="description">Example code:</p>
@@ -146,7 +146,7 @@ class Spotfix_Admin {
 			<?php if ( $status === 'offline' && ! empty( $error ) ) : ?>
 				<p class="spotfix-error-message"><?php echo esc_html( $error ); ?></p>
 			<?php endif; ?>
-			<button type="button" class="button button-secondary" id="spotfix-check-status"><?php _e( 'Check Status', 'spell-grammar-typo-check' ); ?></button>
+			<a href="#" class="spotfix-check-status-link" id="spotfix-check-status"><?php _e( 'Check Status', 'spell-grammar-typo-check' ); ?></a>
 		</div>
 		<?php
 	}
@@ -229,5 +229,21 @@ class Spotfix_Admin {
 		update_option( 'spotfix_settings', $settings );
 
 		wp_send_json_success( $status_check );
+	}
+
+	/**
+	 * Add settings link to plugin actions.
+	 *
+	 * @param array $links Existing plugin action links.
+	 * @return array Modified plugin action links.
+	 */
+	public function add_settings_link( $links ) {
+		$settings_link = sprintf(
+			'<a href="%s">%s</a>',
+			admin_url( 'options-general.php?page=spotfix-settings' ),
+			__( 'Settings', 'spell-grammar-typo-check' )
+		);
+		array_unshift( $links, $settings_link );
+		return $links;
 	}
 }

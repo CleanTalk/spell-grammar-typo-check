@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/spell-grammar-typo-check/
  * Description: Collect questions, suggestions, and fix content directly on website pages.
  * Version: 1.0.0
- * Author: Spotfix Team
+ * Author: doBoard
  * Author URI: https://doboard.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt

@@ -1,3 +1,22 @@
+/* Settings fields layout - labels on top */
+.form-table th {
+	display: block;
+	width: 100%;
+	padding: 15px 0 5px 0;
+	font-weight: 600;
+}
+
+.form-table td {
+	display: block;
+	width: 100%;
+	padding: 0;
+}
+
+.form-table tr {
+	display: block;
+	margin-bottom: 20px;
+}
+
 .spotfix-status-container {
 	margin: 10px 0;
 }
@@ -30,6 +49,23 @@
 	color: #dc3232;
 	margin: 8px 0;
 	font-style: italic;
+}
+
+.spotfix-check-status-link {
+	color: #0073aa;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.spotfix-check-status-link:hover {
+	color: #005177;
+	text-decoration: underline;
+}
+
+.spotfix-check-status-link.checking {
+	color: #999;
+	cursor: not-allowed;
+	text-decoration: none;
 }
 
 .code-textarea {

@@ -2,15 +2,19 @@
 	'use strict';
 
 	$(document).ready(function() {
-		// Check status button handler
+		// Check status link handler
 		$('#spotfix-check-status').on('click', function(e) {
 			e.preventDefault();
 			
-			var $button = $(this);
+			var $link = $(this);
 			var $statusIndicator = $('.spotfix-status-indicator');
 			var $errorMessage = $('.spotfix-error-message');
 			
-			$button.prop('disabled', true).text('Checking...');
+			if ($link.hasClass('checking')) {
+				return false;
+			}
+			
+			$link.addClass('checking').text('Checking...');
 			
 			$.ajax({
 				url: spotfixAdmin.ajaxUrl,
@@ -49,7 +53,7 @@
 					alert('Failed to check status. Please try again.');
 				},
 				complete: function() {
-					$button.prop('disabled', false).text('Check Status');
+					$link.removeClass('checking').text('Check Status');
 				}
 			});
 		});
