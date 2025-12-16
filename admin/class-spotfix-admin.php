@@ -112,6 +112,21 @@ class Spotfix_Admin {
 	 * Render general section.
 	 */
 	public function render_general_section() {
+		// Check if DISALLOW_UNFILTERED_HTML is enabled
+		$disallow_unfiltered_html = defined( 'DISALLOW_UNFILTERED_HTML' ) && DISALLOW_UNFILTERED_HTML;
+
+		$tmpl = '<div class="notice notice-error spotfix-unfiltered-html-notice">
+				<p class="spotfix-unfiltered-html-title"> %s </p>
+				<p class="spotfix-unfiltered-html-description"> %s </p>
+			</div>';
+		
+		if ($disallow_unfiltered_html) {
+			echo sprintf(
+				$tmpl,
+				__( '️DISALLOW_UNFILTERED_HTML is active', 'spelling-grammar-typo-reviews' ),
+				__( 'The DISALLOW_UNFILTERED_HTML constant is currently enabled, which prevents JavaScript code execution for all user roles. This means the SpotFix widget will not work on the public part of your site. The JavaScript code will not be loaded on the frontend.', 'spelling-grammar-typo-reviews' ) );
+		}
+		
 		echo sprintf( '<h3>%s</h3>', __( 'Proofreading, spelling and grammar reviews by visitors', 'spelling-grammar-typo-reviews' ) );
 		echo sprintf( '<p>%s</p>', __( 'Collect questions, suggestions, and fix content directly on website pages.', 'spelling-grammar-typo-reviews' ) );
 	}
@@ -122,11 +137,9 @@ class Spotfix_Admin {
 	public function render_code_field() {
 		$settings = get_option( 'spotfix_settings', array() );
 		$code = isset( $settings['code'] ) ? $settings['code'] : '';
-		$example_code = "(function () {\n      let apbctScript = document.createElement('script');\n      apbctScript.type = 'text/javascript';\n      apbctScript.async = \"true\";\n      apbctScript.src = 'https://spotfix.doboard.com/doboard-widget-bundle.min.js?projectToken=4d335d7b8eff587d9002d90db78f90b6&projectId=103&accountId=1'; \n      let firstScriptNode = document.getElementsByTagName('script')[0];\n      firstScriptNode.parentNode.insertBefore(apbctScript, firstScriptNode);\n    })();";
+		$example_code = "(function () {\n      let apbctScript = document.createElement('script');\n      apbctScript.type = 'text/javascript';\n      apbctScript.async = \"true\";\n      apbctScript.src = 'https://spotfix.doboard.com/doboard-widget-bundle.min.js'; \n      let firstScriptNode = document.getElementsByTagName('script')[0];\n      firstScriptNode.parentNode.insertBefore(apbctScript, firstScriptNode);\n    })();";
 		?>
-		<textarea name="spotfix_settings[code]" rows="8" class="large-text code-textarea" id="spotfix-code"><?php echo esc_textarea( $code ); ?></textarea>
-		<p class="description">Example code:</p>
-		<pre class="code-example"><code><?php echo esc_html( $example_code ); ?></code></pre>
+		<textarea name="spotfix_settings[code]" rows="8" class="large-text code-textarea" id="spotfix-code"<?php echo empty( $code ) ? ' placeholder="' . esc_attr( $example_code ) . '"' : ''; ?>><?php echo esc_textarea( $code ); ?></textarea>
 		<?php
 	}
 
@@ -199,10 +212,10 @@ class Spotfix_Admin {
 
 			<div class="spotfix-info-section">
 				<h2><?php _e( 'Instructions', 'spelling-grammar-typo-reviews' ); ?></h2>
-				<p><?php _e( 'Instructions to obtain the code <a href="https://doboard.com/spotfix#doboard_settings" target="_blank">doboard.com/spotfix#doboard_settings</a>.', 'spelling-grammar-typo-reviews' ); ?></p>
-				<p><?php _e( 'To run the widget, you need a <a href="https://doboard.com" target="_blank">doBoard account</a>. doBoard is the task management system that serves as the backend for Spotfix.', 'spelling-grammar-typo-reviews' ); ?></p>
-				<p><?php _e( 'Have questions? We are ready to support you at <a href="https://wordpress.org/support/plugin/spell-grammar-typo-review" target="_blank">wordpress.org/support/plugin/spell-grammar-typo-review</a>.', 'spelling-grammar-typo-reviews' ); ?></p>
-				<p><?php _e( 'Like the plugin? Review us please <a href="https://wordpress.org/support/plugin/spell-grammar-typo-review/reviews" target="_blank">wordpress.org/support/plugin/spell-grammar-typo-review/reviews</a>.', 'spelling-grammar-typo-reviews' ); ?></p>
+				<p><?php _e( 'Instructions to obtain the code <a href="https://doboard.com/spotfix#doboard_settings" target="_blank">doboard.com/spotfix#doboard_settings</a>', 'spelling-grammar-typo-reviews' ); ?></p>
+				<p><?php _e( 'To run the widget, you need a <a href="https://doboard.com" target="_blank">doBoard account</a> doBoard is the task management system that serves as the backend for Spotfix.', 'spelling-grammar-typo-reviews' ); ?></p>
+				<p><?php _e( 'Have questions? We are ready to support you at <a href="https://wordpress.org/support/plugin/spell-grammar-typo-review" target="_blank">wordpress.org/support/plugin/spell-grammar-typo-review</a>', 'spelling-grammar-typo-reviews' ); ?></p>
+				<p><?php _e( 'Like the plugin? Review us please <a href="https://wordpress.org/support/plugin/spell-grammar-typo-review/reviews" target="_blank">wordpress.org/support/plugin/spell-grammar-typo-review/reviews</a>', 'spelling-grammar-typo-reviews' ); ?></p>
 			</div>
 		</div>
 		<?php
@@ -244,6 +257,34 @@ class Spotfix_Admin {
 			__( 'Settings', 'spelling-grammar-typo-reviews' )
 		);
 		array_unshift( $links, $settings_link );
+		return $links;
+	}
+
+	/**
+	 * Add Support and Review links to plugin row meta (after "Visit plugin site").
+	 *
+	 * @param array  $links Existing plugin meta links.
+	 * @param string $file  Plugin file.
+	 * @return array Modified plugin meta links.
+	 */
+	public function add_plugin_row_meta( $links, $file ) {
+		if ( plugin_basename( SPOTFIX_PLUGIN_DIR . 'spelling-grammar-typo-reviews.php' ) === $file ) {
+			// Add Support link
+			$support_link = sprintf(
+				'<a href="%s" target="_blank">%s</a>',
+				'https://wordpress.org/support/plugin/spelling-grammar-typo-reviews/',
+				__( 'Support', 'spelling-grammar-typo-reviews' )
+			);
+			$links[] = $support_link;
+
+			// Add Review link
+			$review_link = sprintf(
+				'<a href="%s" target="_blank">%s</a>',
+				'https://wordpress.org/support/plugin/spelling-grammar-typo-reviews/reviews/',
+				__( 'Review', 'spelling-grammar-typo-reviews' )
+			);
+			$links[] = $review_link;
+		}
 		return $links;
 	}
 }
