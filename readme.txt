@@ -1,5 +1,5 @@
 === Spotfix - proofreading, spelling and grammar reviews by visitors ===
-Contributors: spotfix
+Contributors: cleantalk, glomberg, alexandergull, sergefcleantalk, antonv1
 Tags: proofreading, grammar, spell-check, feedback, doboard
 Requires at least: 5.0
 Tested up to: 6.9
