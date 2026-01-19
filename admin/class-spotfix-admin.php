@@ -117,7 +117,7 @@ class Spotfix_Admin {
 
 		if ( $disallow_unfiltered_html ) {
 			$title = __( '️DISALLOW_UNFILTERED_HTML is active', 'spotfix-content-review' );
-			$description = __( 'The DISALLOW_UNFILTERED_HTML constant is currently enabled, which prevents JavaScript code execution for all user roles. This means the SpotFix widget will not work on the public part of your site. The JavaScript code will not be loaded on the frontend.', 'spotfix-content-review' );
+			$description = __( 'The DISALLOW_UNFILTERED_HTML constant is currently enabled, which prevents JavaScript code execution for all user roles. This means the Spotfix widget will not work on the public part of your site. The JavaScript code will not be loaded on the frontend.', 'spotfix-content-review' );
 			?>
 			<div class="notice notice-error spotfix-unfiltered-html-notice">
 				<p class="spotfix-unfiltered-html-title"><?php echo esc_html( $title ); ?></p>
@@ -125,7 +125,7 @@ class Spotfix_Admin {
 			</div>
 			<?php
 		}
-		
+
 		echo sprintf( '<h3>%s</h3>', esc_html__( 'Proofreading, spelling and grammar reviews by visitors', 'spotfix-content-review' ) );
 		echo sprintf( '<p>%s</p>', esc_html__( 'Collect questions, suggestions, and fix content directly on website pages.', 'spotfix-content-review' ) );
 	}
@@ -147,7 +147,7 @@ class Spotfix_Admin {
 						echo wp_kses_post(
 							sprintf(
 								/* translators: %1$s: Link to doboard, %2$s: Link to signup */
-								__( 'Go to %1$s → Account → ANY_PROJECT → Settings → SpotFix. Don\'t have a doBoard account yet? %2$s', 'spotfix-content-review' ),
+								__( 'Go to %1$s → Account → ANY_PROJECT → Settings → Spotfix. Don\'t have a doBoard account yet? %2$s', 'spotfix-content-review' ),
 								'<a href="https://doboard.com/?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction" target="_blank" rel="noopener noreferrer">doboard.com</a>',
 								'<a href="https://doboard.com/signup?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction" target="_blank" rel="noopener noreferrer">Signup here</a>'
 							)
@@ -155,7 +155,7 @@ class Spotfix_Admin {
 					?></li>
 					<li><?php esc_html_e( 'Copy the code and paste it into the area above.', 'spotfix-content-review' ); ?></li>
 					<li><?php esc_html_e( 'Click Save settings.', 'spotfix-content-review' ); ?></li>
-					<li><?php esc_html_e( 'You should see the status "SpotFix is online." Congratulations!', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'You should see the status "Spotfix is online." Congratulations!', 'spotfix-content-review' ); ?></li>
 					<li><?php
 						echo wp_kses_post(
 							sprintf(
