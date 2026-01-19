@@ -37,7 +37,7 @@ class Spotfix_Status_Checker {
 		if ( is_wp_error( $response ) ) {
 			return array(
 				'status' => 'offline',
-				'error' => __( 'Cannot connect to doboard.com: ', 'spelling-grammar-typo-reviews' ) . esc_html( $response->get_error_message() )
+				'error' => __( 'Cannot connect to doboard.com: ', 'spotfix-content-review' ) . esc_html( $response->get_error_message() )
 			);
 		}
 
@@ -45,7 +45,7 @@ class Spotfix_Status_Checker {
 		if ( $response_code !== 200 ) {
 			return array(
 				'status' => 'offline',
-				'error' => __( 'Spotfix service returned error code: ', 'spelling-grammar-typo-reviews' ) . esc_html( $response_code )
+				'error' => __( 'Spotfix service returned error code: ', 'spotfix-content-review' ) . esc_html( $response_code )
 			);
 		}
 
@@ -55,7 +55,6 @@ class Spotfix_Status_Checker {
                 'error' => __( 'Spotfix script not found on home page.', 'spelling-grammar-typo-reviews' )
             );
         }
-
 
 		// Additional validation: try to verify project/account exists
 		// This is a simplified check - in production you might want to call an API endpoint

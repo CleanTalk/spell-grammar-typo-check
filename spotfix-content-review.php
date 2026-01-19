@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Spotfix - proofreading, spelling and grammar reviews by visitors
- * Plugin URI: https://wordpress.org/plugins/spelling-grammar-typo-reviews/
+ * Plugin URI: https://wordpress.org/plugins/spotfix-content-review/
  * Description: Collect questions, suggestions, and fix content directly on website pages.
  * Version: 1.0.0
  * Author: doBoard
  * Author URI: https://doboard.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: spelling-grammar-typo-reviews
+ * Text Domain: spotfix-content-review
  */
 
 // If this file is called directly, abort.

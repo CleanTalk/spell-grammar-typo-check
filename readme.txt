@@ -14,7 +14,7 @@ Collect visitor's questions and suggestions directly on your website pages
 
 Highlight → Ask → Resolve
 
-SpotFix is a lightweight on-page widget that makes it easy for visitors, editors, writers, and team members to submit feedback directly in the context of your website's content. It's especially useful for proofreading, spell checking, and fixing outdated or unclear information, because corrections are tied to the exact place where the issue appears.
+Spotfix is a lightweight on-page widget that makes it easy for visitors, editors, writers, and team members to submit feedback directly in the context of your website's content. It's especially useful for proofreading, spell checking, and fixing outdated or unclear information, because corrections are tied to the exact place where the issue appears.
 
 A visitor simply highlights a piece of text or an element on the page. When they do, a compact widget appears in the bottom-right corner, allowing them to submit a Spot — a short request, correction suggestion, or question attached to the precise content location. No need to describe where the problem is — the widget knows automatically.
 
@@ -24,11 +24,15 @@ Each Spot becomes a task in doBoard, where your team can track progress, assign 
 
 You can reply to Spots from doBoard or directly within the widget. Conversations appear as a chat thread with visible progress and status updates. If the visitor shared an email, they'll be notified when you reply.
 
-When collapsed, the SpotFix icon shows how many Spots exist on the current page and across the site. One click reveals the list and instantly highlights all linked elements.
+When collapsed, the Spotfix icon shows how many Spots exist on the current page and across the site. One click reveals the list and instantly highlights all linked elements.
 
-== Why Does SpotFix Work? ==
+== Why Does Spotfix Work? ==
 
-SpotFix turns proofreading and feedback into structured, actionable improvements. No more chasing context. No more messy email chains. Just: Highlight → Ask → Resolve.
+Spotfix turns proofreading and feedback into structured, actionable improvements. No more chasing context. No more messy email chains. Just: Highlight → Ask → Resolve.
+
+== External services ==
+
+This plugin connects to the following APIs — api.doboard.com, api.cleantalk.org, and spotfix.doboard.com — to collect data about open spots and comments for the website and the currently viewed page. This data is displayed in the widget and helps visitors communicate about existing spots and submit new ones. The plugin sends user-generated content, as well as an email address and password (if provided), to the API. It uses JavaScript hosted on spotfix.doboard.com to display the widget to website visitors. This service is provided by CleanTalk Inc, [Privacy Policy](https://doboard.com/privacy-policy).
 
 == External services ==
 
@@ -41,10 +45,10 @@ This plugin connects to the following APIs — api.doboard.com, api.cleantalk.or
 3. Go to Settings > Spotfix to configure the plugin.
 
 What should I do next?
-* Go to [doboard.com](https://doboard.com/?utm_source=spotfix-plugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction)  → Account → ANY_PROJECT → Settings → SpotFix. Don't have a doBoard account yet? Signup here:[doboard.com/signup](https://doboard.com/signup?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction)
+* Go to [doboard.com](https://doboard.com/?utm_source=spotfix-plugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction)  → Account → ANY_PROJECT → Settings → Spotfix. Don't have a doBoard account yet? Signup here:[doboard.com/signup](https://doboard.com/signup?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction)
 * Copy the code and paste it into the area above.
 * Click Save settings.
-* You should see the status "SpotFix is online." Congratulations!
+* You should see the status "Spotfix is online." Congratulations!
 * Go to your home page.
 * Select (mark) any text or image on the page.
 * Click the Review content button in the bottom-right corner.

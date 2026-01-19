@@ -116,8 +116,8 @@ class Spotfix_Admin {
 		$disallow_unfiltered_html = defined( 'DISALLOW_UNFILTERED_HTML' ) && DISALLOW_UNFILTERED_HTML;
 
 		if ( $disallow_unfiltered_html ) {
-			$title = __( '️DISALLOW_UNFILTERED_HTML is active', 'spelling-grammar-typo-reviews' );
-			$description = __( 'The DISALLOW_UNFILTERED_HTML constant is currently enabled, which prevents JavaScript code execution for all user roles. This means the SpotFix widget will not work on the public part of your site. The JavaScript code will not be loaded on the frontend.', 'spelling-grammar-typo-reviews' );
+			$title = __( '️DISALLOW_UNFILTERED_HTML is active', 'spotfix-content-review' );
+			$description = __( 'The DISALLOW_UNFILTERED_HTML constant is currently enabled, which prevents JavaScript code execution for all user roles. This means the Spotfix widget will not work on the public part of your site. The JavaScript code will not be loaded on the frontend.', 'spotfix-content-review' );
 			?>
 			<div class="notice notice-error spotfix-unfiltered-html-notice">
 				<p class="spotfix-unfiltered-html-title"><?php echo esc_html( $title ); ?></p>
@@ -125,9 +125,9 @@ class Spotfix_Admin {
 			</div>
 			<?php
 		}
-		
-		echo sprintf( '<h3>%s</h3>', esc_html__( 'Proofreading, spelling and grammar reviews by visitors', 'spelling-grammar-typo-reviews' ) );
-		echo sprintf( '<p>%s</p>', esc_html__( 'Collect questions, suggestions, and fix content directly on website pages.', 'spelling-grammar-typo-reviews' ) );
+
+		echo sprintf( '<h3>%s</h3>', esc_html__( 'Proofreading, spelling and grammar reviews by visitors', 'spotfix-content-review' ) );
+		echo sprintf( '<p>%s</p>', esc_html__( 'Collect questions, suggestions, and fix content directly on website pages.', 'spotfix-content-review' ) );
 	}
 
 	/**
@@ -141,35 +141,35 @@ class Spotfix_Admin {
 		<textarea name="spotfix_settings[code]" rows="8" class="large-text code-textarea" id="spotfix-code"<?php echo empty( $code ) ? ' placeholder="' . esc_attr( $example_code ) . '"' : ''; ?>><?php echo esc_textarea( $code ); ?></textarea>
 		<?php if ( empty( $code ) ) : ?>
 			<div class="spotfix-instructions-section" style="margin-top: 20px; padding: 20px; background: #f9f9f9; border-left: 4px solid #2271b1;">
-				<h3 style="margin-top: 0;"><?php esc_html_e( 'What should I do next?', 'spelling-grammar-typo-reviews' ); ?></h3>
+				<h3 style="margin-top: 0;"><?php esc_html_e( 'What should I do next?', 'spotfix-content-review' ); ?></h3>
 				<ul style="list-style-type: disc; margin-left: 20px;">
 					<li><?php
 						echo wp_kses_post(
 							sprintf(
 								/* translators: %1$s: Link to doboard, %2$s: Link to signup */
-								__( 'Go to %1$s → Account → ANY_PROJECT → Settings → SpotFix. Don\'t have a doBoard account yet? %2$s', 'spelling-grammar-typo-reviews' ),
+								__( 'Go to %1$s → Account → ANY_PROJECT → Settings → Spotfix. Don\'t have a doBoard account yet? %2$s', 'spotfix-content-review' ),
 								'<a href="https://doboard.com/?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction" target="_blank" rel="noopener noreferrer">doboard.com</a>',
 								'<a href="https://doboard.com/signup?utm_source=spotfix-pllugin&utm_medium=settings&utm_campaign=spotfix&utm_content=instruction" target="_blank" rel="noopener noreferrer">Signup here</a>'
 							)
 						);
 					?></li>
-					<li><?php esc_html_e( 'Copy the code and paste it into the area above.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Click Save settings.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'You should see the status "SpotFix is online." Congratulations!', 'spelling-grammar-typo-reviews' ); ?></li>
+					<li><?php esc_html_e( 'Copy the code and paste it into the area above.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Click Save settings.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'You should see the status "Spotfix is online." Congratulations!', 'spotfix-content-review' ); ?></li>
 					<li><?php
 						echo wp_kses_post(
 							sprintf(
 								/* translators: %s: Link to home page */
-								__( 'Go to the %s', 'spelling-grammar-typo-reviews' ),
+								__( 'Go to the %s', 'spotfix-content-review' ),
 								'<a href="' . esc_url( home_url() ) . '" target="_blank" rel="noopener noreferrer">home page</a>'
 							)
 						);
 					?></li>
-					<li><?php esc_html_e( 'Select (mark) any text or image on the page.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Click the Review content button in the bottom-right corner.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Post your first spot!', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Find the task created from the spot in doboard.com → Account → ANY_PROJECT.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Done!', 'spelling-grammar-typo-reviews' ); ?></li>
+					<li><?php esc_html_e( 'Select (mark) any text or image on the page.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Click the Review content button in the bottom-right corner.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Post your first spot!', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Find the task created from the spot in doboard.com → Account → ANY_PROJECT.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Done!', 'spotfix-content-review' ); ?></li>
 				</ul>
 			</div>
 		<?php endif; ?>
@@ -188,31 +188,31 @@ class Spotfix_Admin {
 		<div class="spotfix-status-container">
 			<span class="spotfix-status-indicator status-<?php echo esc_attr( $status ); ?>">
 				<span class="status-dot"></span>
-				<strong><?php echo esc_html__( 'Spotfix is ', 'spelling-grammar-typo-reviews' ) . esc_html( $status ); ?></strong>
+				<strong><?php echo esc_html__( 'Spotfix is ', 'spotfix-content-review' ) . esc_html( $status ); ?></strong>
 			</span>
 			<?php if ( $status === 'offline' && ! empty( $error ) ) : ?>
 				<p class="spotfix-error-message"><?php echo esc_html( $error ); ?></p>
 			<?php endif; ?>
-			<a href="#" class="spotfix-check-status-link" id="spotfix-check-status"><?php esc_html_e( 'Check Status', 'spelling-grammar-typo-reviews' ); ?></a>
+			<a href="#" class="spotfix-check-status-link" id="spotfix-check-status"><?php esc_html_e( 'Check Status', 'spotfix-content-review' ); ?></a>
 		</div>
 		<?php if ( ! empty( $code ) && $status === 'online' ) : ?>
 			<div class="spotfix-instructions-section" style="margin-top: 20px; padding: 20px; background: #f0f6fc; border-left: 4px solid #2271b1;">
-				<h3 style="margin-top: 0;"><?php esc_html_e( 'What should I do next?', 'spelling-grammar-typo-reviews' ); ?></h3>
+				<h3 style="margin-top: 0;"><?php esc_html_e( 'What should I do next?', 'spotfix-content-review' ); ?></h3>
 				<ul style="list-style-type: disc; margin-left: 20px;">
 					<li><?php
 						echo wp_kses_post(
 							sprintf(
 								/* translators: %s: Link to home page */
-								__( 'Go to the %s', 'spelling-grammar-typo-reviews' ),
+								__( 'Go to the %s', 'spotfix-content-review' ),
 								'<a href="' . esc_url( home_url() ) . '" target="_blank" rel="noopener noreferrer">home page</a>'
 							)
 						);
 					?></li>
-					<li><?php esc_html_e( 'Select (mark) any text or image on the page.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Click the Review content button in the bottom-right corner.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Post your first spot!', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Find the task created from the spot in doboard.com → Account → ANY_PROJECT.', 'spelling-grammar-typo-reviews' ); ?></li>
-					<li><?php esc_html_e( 'Done!', 'spelling-grammar-typo-reviews' ); ?></li>
+					<li><?php esc_html_e( 'Select (mark) any text or image on the page.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Click the Review content button in the bottom-right corner.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Post your first spot!', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Find the task created from the spot in doboard.com → Account → ANY_PROJECT.', 'spotfix-content-review' ); ?></li>
+					<li><?php esc_html_e( 'Done!', 'spotfix-content-review' ); ?></li>
 				</ul>
 			</div>
 		<?php endif; ?>
@@ -226,22 +226,22 @@ class Spotfix_Admin {
 		$settings = get_option( 'spotfix_settings', array() );
 		$visibility = isset( $settings['visibility'] ) ? $settings['visibility'] : 'everyone';
 		?>
-		<p class="description"><?php esc_html_e( 'Choose scope of visibility for the widget.', 'spelling-grammar-typo-reviews' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Choose scope of visibility for the widget.', 'spotfix-content-review' ); ?></p>
 		<fieldset>
 			<label>
 				<input type="radio" name="spotfix_settings[visibility]" value="everyone" <?php checked( $visibility, 'everyone' ); ?> />
-				<?php esc_html_e( 'Everyone including unauthorized visitors.', 'spelling-grammar-typo-reviews' ); ?>
+				<?php esc_html_e( 'Everyone including unauthorized visitors.', 'spotfix-content-review' ); ?>
 			</label><br>
 			<label>
 				<input type="radio" name="spotfix_settings[visibility]" value="logged_in" <?php checked( $visibility, 'logged_in' ); ?> />
-				<?php esc_html_e( 'Authorized in WordPress users.', 'spelling-grammar-typo-reviews' ); ?>
+				<?php esc_html_e( 'Authorized in WordPress users.', 'spotfix-content-review' ); ?>
 			</label><br>
 			<label>
 				<input type="radio" name="spotfix_settings[visibility]" value="admin" <?php checked( $visibility, 'admin' ); ?> />
-				<?php esc_html_e( 'Users with the admin role.', 'spelling-grammar-typo-reviews' ); ?>
+				<?php esc_html_e( 'Users with the admin role.', 'spotfix-content-review' ); ?>
 			</label>
 		</fieldset>
-		<p class="description"><?php esc_html_e( 'The widget is visible only on public pages of WordPress.', 'spelling-grammar-typo-reviews' ); ?></p>
+		<p class="description"><?php esc_html_e( 'The widget is visible only on public pages of WordPress.', 'spotfix-content-review' ); ?></p>
 		<?php
 	}
 
@@ -261,17 +261,17 @@ class Spotfix_Admin {
 				<?php
 				settings_fields( 'spotfix_settings_group' );
 				do_settings_sections( 'spotfix-settings' );
-				submit_button( __( 'Save Settings', 'spelling-grammar-typo-reviews' ) );
+				submit_button( __( 'Save Settings', 'spotfix-content-review' ) );
 				?>
 			</form>
 
 			<div class="spotfix-info-section">
-				<h2><?php esc_html_e( 'Instructions', 'spelling-grammar-typo-reviews' ); ?></h2>
+				<h2><?php esc_html_e( 'Instructions', 'spotfix-content-review' ); ?></h2>
 				<p><?php
 					echo wp_kses_post(
 						sprintf(
 							/* translators: %s: Link to doboard settings */
-							__( 'Instructions to obtain the code %s', 'spelling-grammar-typo-reviews' ),
+							__( 'Instructions to obtain the code %s', 'spotfix-content-review' ),
 							'<a href="https://doboard.com/spotfix#doboard_settings" target="_blank" rel="noopener noreferrer">doboard.com/spotfix#doboard_settings</a>'
 						)
 					);
@@ -280,7 +280,7 @@ class Spotfix_Admin {
 					echo wp_kses_post(
 						sprintf(
 							/* translators: %s: Link to doboard */
-							__( 'To run the widget, you need a %s doBoard is the task management system that serves as the backend for Spotfix.', 'spelling-grammar-typo-reviews' ),
+							__( 'To run the widget, you need a %s doBoard is the task management system that serves as the backend for Spotfix.', 'spotfix-content-review' ),
 							'<a href="https://doboard.com" target="_blank" rel="noopener noreferrer">doBoard account</a>'
 						)
 					);
@@ -289,8 +289,8 @@ class Spotfix_Admin {
 					echo wp_kses_post(
 						sprintf(
 							/* translators: %s: Link to support forum */
-							__( 'Have questions? We are ready to support you at %s', 'spelling-grammar-typo-reviews' ),
-							'<a href="https://wordpress.org/support/plugin/spell-grammar-typo-review" target="_blank" rel="noopener noreferrer">wordpress.org/support/plugin/spell-grammar-typo-review</a>'
+							__( 'Have questions? We are ready to support you at %s', 'spotfix-content-review' ),
+							'<a href="https://wordpress.org/support/plugin/spotfix-content-review" target="_blank" rel="noopener noreferrer">wordpress.org/support/plugin/spotfix-content-review</a>'
 						)
 					);
 				?></p>
@@ -298,8 +298,8 @@ class Spotfix_Admin {
 					echo wp_kses_post(
 						sprintf(
 							/* translators: %s: Link to reviews */
-							__( 'Like the plugin? Review us please %s', 'spelling-grammar-typo-reviews' ),
-							'<a href="https://wordpress.org/support/plugin/spell-grammar-typo-review/reviews" target="_blank" rel="noopener noreferrer">wordpress.org/support/plugin/spell-grammar-typo-review/reviews</a>'
+							__( 'Like the plugin? Review us please %s', 'spotfix-content-review' ),
+							'<a href="https://wordpress.org/support/plugin/spotfix-content-review/reviews" target="_blank" rel="noopener noreferrer">wordpress.org/support/plugin/spotfix-content-review/reviews</a>'
 						)
 					);
 				?></p>
@@ -315,7 +315,7 @@ class Spotfix_Admin {
 		check_ajax_referer( 'spotfix_check_status', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Unauthorized', 'spelling-grammar-typo-reviews' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Unauthorized', 'spotfix-content-review' ) ) );
 		}
 
 		$settings = get_option( 'spotfix_settings', array() );
@@ -341,7 +341,7 @@ class Spotfix_Admin {
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
 			admin_url( 'options-general.php?page=spotfix-settings' ),
-			__( 'Settings', 'spelling-grammar-typo-reviews' )
+			__( 'Settings', 'spotfix-content-review' )
 		);
 		array_unshift( $links, $settings_link );
 		return $links;
@@ -355,20 +355,20 @@ class Spotfix_Admin {
 	 * @return array Modified plugin meta links.
 	 */
 	public function add_plugin_row_meta( $links, $file ) {
-		if ( plugin_basename( SPOTFIX_PLUGIN_DIR . 'spelling-grammar-typo-reviews.php' ) === $file ) {
+		if ( plugin_basename( SPOTFIX_PLUGIN_DIR . 'spotfix-content-review.php' ) === $file ) {
 			// Add Support link
 			$support_link = sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				'https://wordpress.org/support/plugin/spelling-grammar-typo-reviews/',
-				__( 'Support', 'spelling-grammar-typo-reviews' )
+				'https://wordpress.org/support/plugin/spotfix-content-review/',
+				__( 'Support', 'spotfix-content-review' )
 			);
 			$links[] = $support_link;
 
 			// Add Review link
 			$review_link = sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				'https://wordpress.org/support/plugin/spelling-grammar-typo-reviews/reviews/',
-				__( 'Review', 'spelling-grammar-typo-reviews' )
+				'https://wordpress.org/support/plugin/spotfix-content-review/reviews/',
+				__( 'Review', 'spotfix-content-review' )
 			);
 			$links[] = $review_link;
 		}
