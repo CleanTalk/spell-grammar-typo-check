@@ -23,9 +23,20 @@ class Spotfix_Public {
 		$visibility = isset( $settings['visibility'] ) ? $settings['visibility'] : 'everyone';
 
 		// Check if code is configured
-		if ( empty( $code ) ) {
+		if ( empty($code) ) {
 			return;
 		}
+
+        $url = '';
+        preg_match('/apbctScript\.src\s*=\s*["\'](https:\/\/spotfix\.doboard\.com\/[^"\']+)["\']/', $code, $matches);
+        if (isset($matches[1])) {
+            $url = $matches[1];
+        }
+
+        // Check if the URL is correct
+        if ( empty($url) ) {
+            return;
+        }
 
 		// Check visibility settings
 		$should_show = false;
@@ -62,8 +73,16 @@ class Spotfix_Public {
         // Enqueue raw inline script. Note: Code is output as-is since it's user-provided JavaScript from admin settings
         wp_add_inline_script(
                 'spotfix-stub',
-                $code
-        );
+                "(function () {
+                  window.SpotfixWidgetConfig = {verticalPosition: 'compact'};
+                  let spotFixScript = document.createElement('script');
+                  spotFixScript.type = 'text/javascript';
+                  spotFixScript.async = 'true';
+                  spotFixScript.defer = 'true';
+                  spotFixScript.src = '" . esc_url_raw($url) . "';
+                  let firstScriptNode = document.getElementsByTagName('script')[0];
+                  firstScriptNode.parentNode.insertBefore(spotFixScript, firstScriptNode);
+                })();");
 	}
 }
 
